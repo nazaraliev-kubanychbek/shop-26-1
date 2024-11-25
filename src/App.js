@@ -7,6 +7,7 @@ import Header from './components/Header/Header';
 import {useDispatch} from 'react-redux';
 import { useEffect } from 'react';
 import { getCategories } from './redux/reducer';
+import './style.scss';
 
 function App() {
   const dispatch = useDispatch();
