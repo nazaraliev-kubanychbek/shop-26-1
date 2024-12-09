@@ -1,10 +1,13 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { addCart } from "../../redux/reducer";
 
 const Detail = () => {
     const params = useParams();
     const [data, setData] = useState({});
+    const dispatch = useDispatch();
 
     useEffect(()=>{
         axios(`https://fakestoreapi.com/products/${params.id}`)
@@ -25,7 +28,9 @@ const Detail = () => {
                         <p>{data.description}</p>
                         <p>{data.category}</p>
                         <p>${data.price}</p>
-                        <button>buy</button>
+                        <button onClick={()=>{
+                            dispatch(addCart(data))
+                        }}>buy</button>
                     </div>
                 </div>
             }
